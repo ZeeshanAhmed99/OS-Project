@@ -1,4 +1,3 @@
-
 #include<stdio.h> 
 #include<stdlib.h> 
 #include<unistd.h> 
@@ -21,12 +20,12 @@ int main()
 
 	if (pipe(fd1)==-1) 
 	{ 
-		fprintf(stderr, "Pipe Failed" ); 
+		fprintf(stderr, "Failed to create Pipe" ); 
 		return 1; 
 	} 
 	if (pipe(fd2)==-1) 
 	{ 
-		fprintf(stderr, "Pipe Failed" ); 
+		fprintf(stderr, "Failed to create Pipe" ); 
 		return 1; 
 	} 
 
@@ -35,7 +34,7 @@ int main()
 
 	if (p < 0) 
 	{ 
-		fprintf(stderr, "fork Failed" ); 
+		fprintf(stderr, "Failed to create Fork" ); 
 		return 1; 
 	} 
 
@@ -73,12 +72,12 @@ int main()
 		read(fd1[0], concatenate_str, 100); 
 
 		// Concatenate a fixed string with it 
-		int k = strlen(concatenate_str); 
+		int len = strlen(concatenate_str); 
 		int i; 
 		for (i=0; i<strlen(fixed_str); i++) 
-			concatenate_str[k++] = fixed_str[i]; 
+			concatenate_str[len++] = fixed_str[i]; 
 
-		concatenate_str[k] = '\0'; // string ends with '\0' 
+		concatenate_str[len] = '\0'; // string ends with '\0' 
 
 		// Close both reading ends 
 		close(fd1[0]); 
